@@ -1,0 +1,394 @@
+{
+ "cells": [
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import numpy as np\n",
+    "import pandas as pd"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 2,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/html": [
+       "<div>\n",
+       "<style scoped>\n",
+       "    .dataframe tbody tr th:only-of-type {\n",
+       "        vertical-align: middle;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe tbody tr th {\n",
+       "        vertical-align: top;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe thead th {\n",
+       "        text-align: right;\n",
+       "    }\n",
+       "</style>\n",
+       "<table border=\"1\" class=\"dataframe\">\n",
+       "  <thead>\n",
+       "    <tr style=\"text-align: right;\">\n",
+       "      <th></th>\n",
+       "      <th>Horas</th>\n",
+       "    </tr>\n",
+       "  </thead>\n",
+       "  <tbody>\n",
+       "    <tr>\n",
+       "      <th>0</th>\n",
+       "      <td>6</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>1</th>\n",
+       "      <td>7</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>2</th>\n",
+       "      <td>7</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>3</th>\n",
+       "      <td>8</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>4</th>\n",
+       "      <td>8</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>5</th>\n",
+       "      <td>8</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>6</th>\n",
+       "      <td>8</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>7</th>\n",
+       "      <td>9</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>8</th>\n",
+       "      <td>9</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>9</th>\n",
+       "      <td>9</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>10</th>\n",
+       "      <td>9</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>11</th>\n",
+       "      <td>9</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>12</th>\n",
+       "      <td>9</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>13</th>\n",
+       "      <td>9</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>14</th>\n",
+       "      <td>10</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>15</th>\n",
+       "      <td>10</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>16</th>\n",
+       "      <td>10</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>17</th>\n",
+       "      <td>10</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>18</th>\n",
+       "      <td>10</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>19</th>\n",
+       "      <td>11</td>\n",
+       "    </tr>\n",
+       "  </tbody>\n",
+       "</table>\n",
+       "</div>"
+      ],
+      "text/plain": [
+       "    Horas\n",
+       "0       6\n",
+       "1       7\n",
+       "2       7\n",
+       "3       8\n",
+       "4       8\n",
+       "5       8\n",
+       "6       8\n",
+       "7       9\n",
+       "8       9\n",
+       "9       9\n",
+       "10      9\n",
+       "11      9\n",
+       "12      9\n",
+       "13      9\n",
+       "14     10\n",
+       "15     10\n",
+       "16     10\n",
+       "17     10\n",
+       "18     10\n",
+       "19     11"
+      ]
+     },
+     "execution_count": 2,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "# Load Data\n",
+    "\n",
+    "df_horas = pd.read_csv('1.2.2 Muestra de Datos .csv', sep=',', header=None, names=['Horas'])\n",
+    "df_horas"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 3,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "<class 'pandas.core.frame.DataFrame'>\n",
+      "RangeIndex: 20 entries, 0 to 19\n",
+      "Data columns (total 1 columns):\n",
+      " #   Column  Non-Null Count  Dtype\n",
+      "---  ------  --------------  -----\n",
+      " 0   Horas   20 non-null     int64\n",
+      "dtypes: int64(1)\n",
+      "memory usage: 288.0 bytes\n"
+     ]
+    }
+   ],
+   "source": [
+    "df_horas.info()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 4,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/html": [
+       "<div>\n",
+       "<style scoped>\n",
+       "    .dataframe tbody tr th:only-of-type {\n",
+       "        vertical-align: middle;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe tbody tr th {\n",
+       "        vertical-align: top;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe thead th {\n",
+       "        text-align: right;\n",
+       "    }\n",
+       "</style>\n",
+       "<table border=\"1\" class=\"dataframe\">\n",
+       "  <thead>\n",
+       "    <tr style=\"text-align: right;\">\n",
+       "      <th></th>\n",
+       "      <th>Horas</th>\n",
+       "    </tr>\n",
+       "  </thead>\n",
+       "  <tbody>\n",
+       "    <tr>\n",
+       "      <th>count</th>\n",
+       "      <td>20.000000</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>mean</th>\n",
+       "      <td>8.800000</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>std</th>\n",
+       "      <td>1.239694</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>min</th>\n",
+       "      <td>6.000000</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>25%</th>\n",
+       "      <td>8.000000</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>50%</th>\n",
+       "      <td>9.000000</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>75%</th>\n",
+       "      <td>10.000000</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>max</th>\n",
+       "      <td>11.000000</td>\n",
+       "    </tr>\n",
+       "  </tbody>\n",
+       "</table>\n",
+       "</div>"
+      ],
+      "text/plain": [
+       "           Horas\n",
+       "count  20.000000\n",
+       "mean    8.800000\n",
+       "std     1.239694\n",
+       "min     6.000000\n",
+       "25%     8.000000\n",
+       "50%     9.000000\n",
+       "75%    10.000000\n",
+       "max    11.000000"
+      ]
+     },
+     "execution_count": 4,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "df_horas.describe()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 5,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "col_0  frecuencia\n",
+      "Horas            \n",
+      "6               1\n",
+      "7               2\n",
+      "8               4\n",
+      "9               7\n",
+      "10              5\n",
+      "11              1\n"
+     ]
+    }
+   ],
+   "source": [
+    "# Generar tabla de frecuencias\n",
+    "tab = pd.crosstab(index=df_horas[\"Horas\"],columns=\"frecuencia\")\n",
+    "print(tab)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 12,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "<class 'pandas.core.frame.DataFrame'>\n",
+      "Int64Index: 6 entries, 6 to 11\n",
+      "Data columns (total 1 columns):\n",
+      " #   Column      Non-Null Count  Dtype\n",
+      "---  ------      --------------  -----\n",
+      " 0   frecuencia  6 non-null      int64\n",
+      "dtypes: int64(1)\n",
+      "memory usage: 96.0 bytes\n"
+     ]
+    }
+   ],
+   "source": [
+    "tab.info()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 6,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import matplotlib.pyplot as plt"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 26,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "Text(0, 0.5, 'Frecuencia')"
+      ]
+     },
+     "execution_count": 26,
+     "metadata": {},
+     "output_type": "execute_result"
+    },
+    {
+     "data": {
+      "image/png": "iVBORw0KGgoAAAANSUhEUgAAAXgAAAEWCAYAAABsY4yMAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAADh0RVh0U29mdHdhcmUAbWF0cGxvdGxpYiB2ZXJzaW9uMy4yLjIsIGh0dHA6Ly9tYXRwbG90bGliLm9yZy+WH4yJAAAWWUlEQVR4nO3de5BmdX3n8feHGZCLIwjMukFsBxLEKFHQVvAaVzSCQXCFGFhlRaOzrquoq6WS7Kqs0d0Yk1KiZTlBLt5QGEEtKzG6lgaNeOG2yoAEBLnJZVCQGUAR/O4f53R4punuefpy+uk+vF9VT/W5/76nn6lPn/mdW6oKSVL/bDPqAiRJ3TDgJamnDHhJ6ikDXpJ6yoCXpJ4y4CWppwx4zUuSDUmeM+o6lpIkpyX5y0Vo57gk357jus9Jcv1C16SlxYDXtJL8NMnzJk3bIlSq6vFV9c2tbGdNkkqysqNSJU3BgNey5x8OaWoGvOZl8Cg/yVOTnJ/kjiQ3J/nbdrFz25+3J9mc5GlJtknyP5Jck+SWJJ9IsvPAdv9zO+/nSf7npHbenWR9kk8luQM4rm37vCS3J7kxyYeTbDewvUryuiRXJNmU5D1JfjfJd9p6z5xYPsnDk3w5ycYkt7XDe87wOzggyYXtdj8HbD9p/mFJLm5r+06SJ8ywrccm+VqSXyS5PMlLB+btluRLbb3fB3530rofSnJdO/+CJM8amLdD23V0W5JLgadMWnePJJ9v9/nqJMcPzJvue9VSV1V+/Ez5AX4KPG/StOOAb0+1DHAecGw7/FDgoHZ4DVDAyoH1XgVcCezdLns28Ml23uOAzcAzge2ADwC/GWjn3e34i2kOUnYAngwcBKxs27sMeNNAewV8EXgY8Hjg18DX2/Z3Bi4FXtEuuxtwJLAjsAo4C/jCNL+j7YBrgDcD2wJHtbX9ZTv/AOAW4EBgBfCK9nf2kCm2tRNwHfDKdj8OAG4FHtfO/yxwZrvcfsANk76Ll7e1rwTeAtwEbN/O+z/At4BdgUcBlwDXt/O2AS4A3tnuz97AVcALZvpe/Sz9z8gL8LN0P20QbQZuH/jcxfQBfy5wIrD7pO2s4YEB/3XgdQPj+7bBuLINmjMG5u0I3DMp4M/dSu1vAs4ZGC/gGQPjFwBvHxj/G+CD02xrf+C2aeY9G/gZkIFp3xkI+I8C75m0zuXAH06xrT8FvjVp2seAd7V/HH4DPHZg3vsGv4sptncb8MR2+CrgkIF5awcC/kDg2knrngCcOtP36mfpf+yi0da8uKp2mfgAr5th2T8DHgP8OMkPkhw2w7J70Bz5TriGJtwf0c67bmJGVd0F/HzS+tcNjiR5TNuVclPbbfM+YPdJ69w8MHz3FOMPbbe1Y5KPtV1Ed9AE3C5JVkyzHzdUm4QD+zLh0cBb2u6Z25PcTnMEvccU23o0cOCkZV8G/HtgNc3vZ3C/B9shyVuTXJbkl+26Ow/8DvaYYd1HA3tMavfPab4LmN33qiXEk1NaMFV1BXBMkm2AlwDrk+xGc/Q82c9ogmXCGHAvTejeSHNEDzT9xzRdD1s0N2n8o8BFwDFVtSnJm2i6S+biLW37B1bVTUn2b7edKZa9EXhkkgyE/Bjwk3b4OuC9VfXeIdq9Dvjnqnr+5BntH5d7af44/HignYn5zwLeBhwMbKiq3ya5baDmG9t1N0xet2336qraZ6qipvteq+rOIfZJI+QRvBZMkpcnWV1Vv6XpzgH4LbCx/bn3wOJnAG9OsleSh9IccX+uqu4F1gMvSvL09sTnu5k6XAetAu4ANid5LPBf57Erq2iO6G9PsitNF8l0zqMJ3uOTbJvkJcBTB+b/PfDaJAemsVOSP06yaoptfRl4TJJj221tm+QpSX6/qu6jOU/x7vZ/GI+j6c8frPlemt/1yiTvpDnfMOFM4IT2BPKewBsG5n0f2JTk7e3J2BVJ9kvyFJjxe9USZ8BrIR0CbEiyGfgQcHRV3d12sbwX+Je2C+Ag4BTgkzTdH1cDv6INnara0A5/lubIczPNicpfz9D2W4H/BGyiCdXPzWM/Pkhz4vZW4LvAV6ZbsKruoTmqPQ74BU0/+tkD888HXgN8mKZP/Mp22am2tQn4I+Bomv/h3AT8FfCQdpHX03Qj3QScBpw6sPo/tXX+K033y6/YskvmxHb61cBXaX73E+3eBxxGc67h6na/T6bp4oFpvtfpfidaOrJl16G09LRH+LcD+1TV1aOuR1ouPILXkpTkRW1XxE40l0n+iOaKHUlDMuC1VB1B003xM2Afmm4B/7spzYJdNJLUUx7BS1JPLanr4Hffffdas2bNqMuQpGXjggsuuLWqVk81b0kF/Jo1azj//PNHXYYkLRtJrplunl00ktRTBrwk9ZQBL0k9ZcBLUk8Z8JLUUwa8JPVUZwGfZN/2PZQTnzvaZ3RLkhZBZ9fBV9XlNI8fnXhZwQ3AOV21J0na0mJ10RwM/KSqpr0gX5K0sBbrTtajad7g8wBJ1tK8AJixsbGpFpGWnE3rjx91CbOy6qiTRl2CRqDzI/j2lWuHA2dNNb+q1lXVeFWNr1495eMUJElzsBhdNIcCF1bVzVtdUpK0YBYj4I9hmu4ZSVJ3Og349nVrz2fgJcSSpMXR6UnWqroT2K3LNiRJU/NOVknqKQNeknrKgJeknjLgJamnDHhJ6ikDXpJ6yoCXpJ4y4CWppwx4SeopA16SesqAl6SeMuAlqacMeEnqKQNeknrKgJeknjLgJamnDHhJ6ikDXpJ6yoCXpJ4y4CWppzoN+CS7JFmf5MdJLkvytC7bkyTdb2XH2/8Q8JWqOirJdsCOHbcnSWp1FvBJdgaeDRwHUFX3APd01Z4kaUtddtHsBWwETk1yUZKTk+w0eaEka5Ocn+T8jRs3dliOJD24dBnwK4EnAR+tqgOAO4F3TF6oqtZV1XhVja9evbrDciTpwaXLgL8euL6qvteOr6cJfEnSIugs4KvqJuC6JPu2kw4GLu2qPUnSlrq+iuYNwKfbK2iuAl7ZcXuSpFanAV9VFwPjXbYhSZqad7JKUk8Z8JLUUwa8JPWUAS9JPWXAS1JPGfCS1FMGvCT1lAEvST1lwEtSTxnwktRTBrwk9ZQBL0k9ZcBLUk8Z8JLUUwa8JPWUAS9JPWXAS1JPGfCS1FMGvCT1lAEvST1lwEtST63scuNJfgpsAu4D7q2q8S7bkyTdr9OAb/2Hqrp1EdqRJA2wi0aSeqrrI/gCvpqkgI9V1brJCyRZC6wFGBsb67gcSVPZtP74UZcwK6uOOmnUJSwLXR/BP7OqngQcCvy3JM+evEBVrauq8aoaX716dcflSNKDR6cBX1U3tD9vAc4Bntple5Kk+3UW8El2SrJqYhj4I+CSrtqTJG2pyz74RwDnJJlo5zNV9ZUO25MkDegs4KvqKuCJXW1fkjQzL5OUpJ4y4CWppwx4SeopA16SesqAl6SeMuAlqacMeEnqKQNeknrKgJeknjLgJamnhgr4JAcl+UGSzUnuSXJfkju6Lk6SNHfDHsF/GDgGuALYAXg18JGuipIkzd/QXTRVdSWwoqruq6pTgUO6K0uSNF/DPk3yriTbARcneT9wI/bfS9KSNmxIHwusAF4P3Ak8Cjiyq6IkSfM31BF8VV3TDt4NnNhdOZKkhTJjwCc5s6pemuRHQE2eX1VP6KwySdK8bO0I/o3tz8O6LkSStLBmDPiqurEd3Aa4sap+BZBkB5p3rkqSlqhhT7KeBfx2YPy+dpokaYkaNuBXVtU9EyPt8HbDrJhkRZKLknx5LgVKkuZm2IDfmOTwiZEkRwC3DrnuG4HLZluYJGl+hg341wJ/nuTaJNcBbwf+y9ZWSrIn8MfAyXMvUZI0F8NeB/8T4KAkD23HNw+5/Q8CbwNWTbdAkrXAWoCxsbEhN6vlZtP640ddwqysOuqkUZcgzdtQAZ/kITR3rq4BViYBoKr+1wzrHAbcUlUXJHnOdMtV1TpgHcD4+PgDrrWXJM3NsM+i+SLwS+AC4NdDrvMM4PAkLwS2Bx6W5FNV9fLZlylJmq1hA37PqprV0yOr6gTgBID2CP6thrskLZ5hT7J+J8kfdFqJJGlBDXsE/0zguCRX03TRBKhhn0VTVd8EvjmXAiVJczNswB/aaRWSpAU3VBdN+7jgRwHPbYfvGnZdSdJoDPvS7XfR3Nx0QjtpW+BTXRUlSZq/YY/C/yNwOM3bnKiqnzHDzUuSpNEbNuDvqaqifelHkp26K0mStBCGDfgzk3wM2CXJa4D/C/x9d2VJkuZr2GfRfCDJ84E7gH2Bd1bV1zqtTJI0L8NeJkkb6Ia6JC0Twz5sbBP3v3R7O5qraO6sqod1VZgkaX6G7aL5tytm0jxK8gjgoK6KkiTN36xvVqrGF4AXdFCPJGmBDNtF85KB0W2AceBXnVQkSVoQw55kfdHA8L3AT2m6aSRJS9SwffCv7LoQSdLCGvZZNKcn2WVg/OFJTumuLEnSfA17kvUJVXX7xEhV3QYc0E1JkqSFMGzAb5Pk4RMjSXZlFjdJSZIW37Ah/TfAeUnOasf/BHhvNyVJkhbCsCdZP5HkfOC57aSXVNWl3ZUlSZqv2dzotCvN4wk+DGxMsldHNUmSFoBvdJKknursjU5Jtk/y/ST/L8mGJCfOr1RJ0mwMe5L1nqqqJLN5o9OvaV7SvTnJtsC3k/xjVX13rsVKkobX2Rud2oeSbW5Ht20/NcMqkqQFtNUj+PbxwJ8DHsss3+iUZAVwAfB7wEeq6ntTLLMWWAswNjY2q+IlSdPbasC3XTP/UFV/wCzf6FRV9wH7t485OCfJflV1yaRl1gHrAMbHxz3Cl6QFMmwXzYVJnjLXRtrHHHwDOGSu25Akzc6wAX8g8N0kP0nywyQ/SvLDmVZIsnriAWVJdgCeD/x4fuVKkoY1YxdNkrGqupa5vb3pd4DT2374bYAzq+rLc9iOJGkOttYH/wXgSVV1TZLPV9WRw264qn6IT5yUpJHZWhdNBob37rIQSdLC2lrA1zTDkqQlbmtdNE9McgfNkfwO7TDteFXVwzqtTpI0ZzMGfFWtWKxCJEkLazaPC5YkLSMGvCT1lAEvST1lwEtSTxnwktRTBrwk9ZQBL0k9ZcBLUk8Z8JLUUwa8JPWUAS9JPWXAS1JPGfCS1FMGvCT1lAEvST1lwEtST3UW8EkeleQbSS5NsiHJG7tqS5L0QFt7Zd983Au8paouTLIKuCDJ16rq0g7blCS1OjuCr6obq+rCdngTcBnwyK7akyRtaVH64JOsAQ4AvrcY7UmSuu2iASDJQ4HPA2+qqjummL8WWAswNjbWdTnLxqb1x4+6hFlZddRJoy5B0iSdHsEn2ZYm3D9dVWdPtUxVrauq8aoaX716dZflSNKDSpdX0QT4OHBZVf1tV+1IkqbW5RH8M4Bjgecmubj9vLDD9iRJAzrrg6+qbwPpavuSpJl5J6sk9ZQBL0k9ZcBLUk8Z8JLUUwa8JPWUAS9JPWXAS1JPGfCS1FMGvCT1lAEvST1lwEtSTxnwktRTBrwk9ZQBL0k9ZcBLUk8Z8JLUUwa8JPWUAS9JPWXAS1JPGfCS1FMGvCT1VGcBn+SUJLckuaSrNiRJ0+vyCP404JAOty9JmkFnAV9V5wK/6Gr7kqSZrRx1AUnWAmsBxsbG5rydTeuPX6iSFsWqo04adQlSb5kHjZGfZK2qdVU1XlXjq1evHnU5ktQbIw94SVI3DHhJ6qkuL5M8AzgP2DfJ9Un+rKu2JEkP1NlJ1qo6pqttS5K2zi4aSeopA16SesqAl6SeMuAlqacMeEnqKQNeknrKgJeknjLgJamnDHhJ6ikDXpJ6yoCXpJ4y4CWppwx4SeopA16SesqAl6SeMuAlqacMeEnqKQNeknrKgJeknjLgJamnDHhJ6qlOAz7JIUkuT3Jlknd02ZYkaUudBXySFcBHgEOBxwHHJHlcV+1JkrbU5RH8U4Erq+qqqroH+CxwRIftSZIGpKq62XByFHBIVb26HT8WOLCqXj9pubXA2nZ0X+DyIZvYHbh1gcpdCtyfpc39WdoezPvz6KpaPdWMlQtXz9xU1Tpg3WzXS3J+VY13UNJIuD9Lm/uztLk/U+uyi+YG4FED43u20yRJi6DLgP8BsE+SvZJsBxwNfKnD9iRJAzrroqmqe5O8HvgnYAVwSlVtWMAmZt2ts8S5P0ub+7O0uT9T6OwkqyRptLyTVZJ6yoCXpJ5adgGfZJck65P8OMllSZ426prmI8m+SS4e+NyR5E2jrmuukrw5yYYklyQ5I8n2o65pPpK8sd2XDcv1e0lySpJbklwyMG3XJF9LckX78+GjrHE2ptmfP2m/o98mWVaXS06zP3/dZtwPk5yTZJe5bHvZBTzwIeArVfVY4InAZSOuZ16q6vKq2r+q9geeDNwFnDPisuYkySOB44HxqtqP5uT60aOtau6S7Ae8huau7CcChyX5vdFWNSenAYdMmvYO4OtVtQ/w9XZ8uTiNB+7PJcBLgHMXvZr5O40H7s/XgP2q6gnAvwInzGXDyyrgk+wMPBv4OEBV3VNVt4+2qgV1MPCTqrpm1IXMw0pghyQrgR2Bn424nvn4feB7VXVXVd0L/DNNiCwrVXUu8ItJk48ATm+HTwdevKhFzcNU+1NVl1XVsHfBLynT7M9X239zAN+luY9o1pZVwAN7ARuBU5NclOTkJDuNuqgFdDRwxqiLmKuqugH4AHAtcCPwy6r66mirmpdLgGcl2S3JjsAL2fLmveXsEVV1Yzt8E/CIURajGb0K+Me5rLjcAn4l8CTgo1V1AHAny+u/ltNqbwY7HDhr1LXMVduPewTNH+I9gJ2SvHy0Vc1dVV0G/BXwVeArwMXAfSMtqgPVXCvt9dJLUJK/AO4FPj2X9ZdbwF8PXF9V32vH19MEfh8cClxYVTePupB5eB5wdVVtrKrfAGcDTx9xTfNSVR+vqidX1bOB22j6Q/vg5iS/A9D+vGXE9WiSJMcBhwEvqznesLSsAr6qbgKuS7JvO+lg4NIRlrSQjmEZd8+0rgUOSrJjktB8P8v6JHiSf9f+HKPpf//MaCtaMF8CXtEOvwL44ghr0SRJDgHeBhxeVXfNeTvL7U7WJPsDJwPbAVcBr6yq20Zb1fy05xGuBfauql+Oup75SHIi8Kc0/628CHh1Vf16tFXNXZJvAbsBvwH+e1V9fcQlzVqSM4Dn0DyC9mbgXcAXgDOBMeAa4KVVNflE7JI0zf78Avg7YDVwO3BxVb1gVDXOxjT7cwLwEODn7WLfrarXznrbyy3gJUnDWVZdNJKk4RnwktRTBrwk9ZQBL0k9ZcBLUk8Z8HpQSbJ50vhxST48qnqkLhnw0iy0D1GTlgX/sUqtJGuAU2huONlIcxPdtUlOA34FHAD8S5LP0jy2envg7na5y5M8HjiV5ia8bYAjq+qKxd4PaYIBrwebHZJcPDC+K81t+9DcCXl6VZ2e5FXASdz/GN09gadX1X1JHgY8q32x/POA9wFHAq8FPlRVn24fHrdiMXZImo4Brwebu9uXqwD/9kCniTcAPY37n/f+SeD9A+udVVUTT5LcGTg9yT40T2Hctp1+HvAXSfYEzvboXaNmH7w0nDsHht8DfKN9a9WLaLpqqKrP0Dzy+W7gH5I8d9GrlAYY8NL9vsP9rxh8GfCtaZbbGbihHT5uYmKSvYGrquokmqczPqGbMqXhGPDS/d4AvDLJD4FjgTdOs9z7gf+d5CK27OZ8KXBJ28e/H/CJLouVtsanSUpST3kEL0k9ZcBLUk8Z8JLUUwa8JPWUAS9JPWXAS1JPGfCS1FP/H6d9nMNakrjEAAAAAElFTkSuQmCC\n",
+      "text/plain": [
+       "<Figure size 432x288 with 1 Axes>"
+      ]
+     },
+     "metadata": {
+      "needs_background": "light"
+     },
+     "output_type": "display_data"
+    }
+   ],
+   "source": [
+    "datos= df_horas[\"Horas\"]\n",
+    "\n",
+    "intervalos = range(min(datos), max(datos) + 2) #calculamos los extremos de los intervalos\n",
+    "\n",
+    "plt.hist(x=datos, bins=intervalos, color='#F2AB6D', rwidth=0.85)\n",
+    "plt.title('Histograma de edades')\n",
+    "plt.xlabel('Horas')\n",
+    "plt.ylabel('Frecuencia')"
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.7.6"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 4
+}
